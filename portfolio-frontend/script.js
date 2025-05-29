@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.textContent = 'Enviando...';
 
             try {
-                const backendUrl = 'http://localhost:3000/send-email';
+                const backendUrl = '/.netlify/functions/send-email';
                 const response = await fetch(backendUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
