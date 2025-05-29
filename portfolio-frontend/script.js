@@ -18,17 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const revealCallback = (entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    const delay = entry.target.dataset.delay;
+                    if (delay) {
+                        entry.target.style.transitionDelay = delay;
+                    }
                     entry.target.classList.add('is-visible');
                     
                     // Interação com o carrossel para aplicar zoom no card ativo ao ser revelado
                     if (entry.target.classList.contains('project-card') && entry.target.closest('.projects-carousel-track')) {
                         const track = entry.target.closest('.projects-carousel-track');
-                        // Presume-se que o track armazena o currentIndex em um dataset
                         const activeCardIndex = parseInt(track.dataset.currentIndex || "0"); 
                         const cardsInTrack = Array.from(track.children);
                         
                         if(cardsInTrack.indexOf(entry.target) === activeCardIndex && entry.target.classList.contains('is-visible')) {
-                            // Adia um pouco para garantir que a transição do revealOnScroll não conflite com o zoom
                             setTimeout(() => {
                                 entry.target.classList.add('is-active-project');
                             }, 50); 
@@ -117,14 +119,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 statusMessageElement = document.createElement('p');
                 statusMessageElement.className = 'form-status-message';
                 const submitButtonEl = form.querySelector('button[type="submit"]');
-                // Insere a mensagem de status após o botão de envio
                 if (submitButtonEl && submitButtonEl.parentNode) {
                     submitButtonEl.parentNode.insertBefore(statusMessageElement, submitButtonEl.nextSibling);
-                } else { // Fallback caso o botão não seja encontrado ou não tenha pai
+                } else { 
                     form.appendChild(statusMessageElement);
                 }
             }
-            statusMessageElement.textContent = ''; // Limpa mensagem anterior
+            statusMessageElement.textContent = '';
 
             const submitButton = form.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.textContent;
@@ -181,27 +182,23 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const cards = Array.from(track.children);
         let cardFullWidth = 0;
-        let currentIndex = 0; // Índice do card que estará alinhado à esquerda da viewport
-        let cardsToScrollAtOnce = 1; // Quantos "cards lógicos" o carrossel avança
+        let currentIndex = 0;
+        let cardsToScrollAtOnce = 1;
 
         const updateCardVisualState = () => {
             if (!cards.length) return;
             cards.forEach((card, index) => {
-                // O card "ativo" para o zoom é o que está no currentIndex
                 if (index === currentIndex) {
-                    // Adia a aplicação da classe ativa se o card ainda não foi revelado pelo scroll
-                    // Isso previne que o zoom aconteça antes do card estar visível pela animação de entrada.
-                    if (card.classList.contains('is-visible')) {
+                    if (card.classList.contains('is-visible')) { // Apenas aplica zoom se já estiver visível pelo reveal
                         card.classList.add('is-active-project');
                     } else {
-                        // Se não está visível ainda, remove para evitar zoom prematuro
                         card.classList.remove('is-active-project'); 
                     }
                 } else {
                     card.classList.remove('is-active-project');
                 }
             });
-            track.dataset.currentIndex = currentIndex.toString(); // Salva o currentIndex para uso no revealOnScroll
+            track.dataset.currentIndex = currentIndex.toString();
         };
 
         const calculateDimensions = () => {
@@ -210,8 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const cardWidth = cards[0].offsetWidth; 
             const cardMarginRight = parseInt(cardStyle.marginRight) || 0;
             cardFullWidth = cardWidth + cardMarginRight;
-
-            // Define quantos cards lógicos rolar por vez (simplificado para 1)
             cardsToScrollAtOnce = 1; 
         };
         
@@ -272,14 +267,56 @@ document.addEventListener('DOMContentLoaded', () => {
             moveToCard(currentIndex); 
         });
 
-        // Inicialização
         calculateDimensions();
         moveToCard(0); 
     };
 
-    // Inicializa todas as funcionalidades
+    /**
+     * Função para Animação de Texto Letra por Letra
+     * @param {string} selector - O seletor CSS para o elemento de texto.
+     * @param {number} staggerMs - O atraso base em milissegundos entre cada letra.
+     */
+    const setupLetterByLetterAnimation = (selector, staggerMs = 40) => {
+        const textElement = document.querySelector(selector);
+        if (!textElement) {
+            return;
+        }
+
+        const originalText = textElement.textContent || "";
+        textElement.innerHTML = ''; 
+        textElement.classList.add('animate-text-letters'); 
+
+        originalText.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            span.className = 'char';
+            span.innerHTML = (char === ' ') ? '&nbsp;' : char; 
+            span.style.transitionDelay = `${index * staggerMs}ms`;
+            textElement.appendChild(span);
+        });
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Garante que o elemento pai (textElement) esteja visível antes de revelar as letras.
+                    // Se o textElement em si já for um .reveal-on-scroll, ele já terá a classe .is-visible.
+                    // Ou podemos apenas adicionar text-revealed diretamente.
+                    textElement.classList.add('text-revealed');
+                    obs.unobserve(textElement); 
+                }
+            });
+        }, { threshold: 0.5 }); 
+
+        observer.observe(textElement);
+    };
+
+
+    // --- INICIALIZAÇÃO DE TODAS AS FUNÇÕES ---
     revealOnScroll();
     activateNavigationAndScroll();
     handleContactFormSubmit();
     setupProjectCarousel(); 
+    
+    // Chama a animação de texto para o H1 da seção Hero
+    setupLetterByLetterAnimation('.hero h1', 40); 
+
 });
