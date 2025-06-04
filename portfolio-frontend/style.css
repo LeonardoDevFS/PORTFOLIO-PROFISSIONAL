@@ -239,7 +239,7 @@ nav ul li a.active::after {
     transform: translateY(30px) scale(0.8) rotateX(-90deg);
     transform-origin: center center -15px; /* Ajusta a origem da rotação */
     transition-property: transform, opacity;
-    transition-duration: 0.5s; 
+    transition-duration: 0.5s;
     transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* EaseOutCubic */
     /* transition-delay é definido via JavaScript inline style */
 }
@@ -253,7 +253,6 @@ nav ul li a.active::after {
 .about {
     background-color: #fff;
 }
-/* ... (restante dos estilos para .about, .profile, etc. como antes) ... */
 .profile {
     display: flex;
     flex-direction: column;
@@ -284,7 +283,6 @@ nav ul li a.active::after {
 .skills {
     background-color: #f8f9fa;
 }
-/* ... (restante dos estilos para .skills, .skills-grid, .skill-category, .soft-skills-list como antes) ... */
 .skills h3 {
     font-size: clamp(1.3rem, 3.5vw, 1.6rem);
     text-align: left;
@@ -311,7 +309,7 @@ nav ul li a.active::after {
     padding: 25px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Adicionado para hover */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .skill-category:hover {
     transform: translateY(-5px) scale(1.02);
@@ -378,19 +376,19 @@ nav ul li a.active::after {
 .projects {
     background-color: #fff;
 }
-/* ... (todos os estilos para .project-carousel-wrapper, .viewport, .track, .project-card com .is-active-project, .carousel-button como antes) ... */
+
 .project-carousel-wrapper {
     position: relative;
     width: 100%;
-    max-width: 1200px; 
-    margin: 40px auto 0; 
-    padding: 0 50px; 
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 0 50px; /* Espaço para os botões de navegação */
     box-sizing: border-box;
 }
 
 .project-carousel-viewport {
     width: 100%;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .projects-carousel-track {
@@ -399,10 +397,10 @@ nav ul li a.active::after {
 }
 
 .projects-carousel-track .project-card {
-    min-width: 280px; 
+    min-width: 280px;
     width: calc((100% / 3) - 20px); 
     flex-shrink: 0;
-    margin-right: 30px; 
+    margin-right: 30px;
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
     border-radius: 8px;
@@ -410,45 +408,56 @@ nav ul li a.active::after {
     padding: 25px 30px;
     display: flex;
     flex-direction: column;
-    height: 100%; 
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+    height: 100%;
+    /* Transições para hover, active e reveal */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
                 opacity 0.4s ease,
-                box-shadow 0.4s ease;
-    opacity: 0.7; 
-    transform: scale(0.95); 
+                box-shadow 0.4s ease,
+                border-color 0.4s ease; /* Adicionada transição para border-color */
+    opacity: 0.85; /* Cards não ativos são levemente translúcidos */
+    transform: scale(1); /* Estado base sem zoom */
 }
+
+/* Efeito de hover para cards não ativos */
 .projects-carousel-track .project-card:not(.is-active-project):hover {
-    transform: scale(0.98) translateY(-3px); /* Efeito hover para não ativos */
-    opacity: 0.85;
+    transform: translateY(-3px); /* Leve elevação no hover */
+    opacity: 1; /* Opacidade total no hover */
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-
+/* Estilo do card ativo - SEM O SCALE que poderia causar bugs */
 .projects-carousel-track .project-card.is-active-project {
-    opacity: 1;
-    transform: scale(1.05); 
-    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.2), 0 5px 15px rgba(0,0,0,0.15); 
-    z-index: 5; 
+    opacity: 1; /* Totalmente opaco */
+    /* transform: scale(1.05); */ /* REMOVIDO o scale para evitar bugs de layout/overlap */
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.25), 0 4px 12px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
+    border-color: #007bff; /* Cor da borda para destaque */
+    z-index: 5; /* Garante que a sombra pronunciada não seja cortada por outros elementos */
 }
 
+/* --- Estilos para Animação de Revelar ao Rolar (Reveal-on-Scroll) para os cards --- */
+
+/* Estado inicial do card antes de ser revelado */
 .projects-carousel-track .project-card.reveal-on-scroll {
-    opacity: 0; 
-    transform: translateY(40px) scale(0.95); 
+    opacity: 0;
+    transform: translateY(40px) scale(0.98); /* Começa de baixo, um pouco menor e invisível */
 }
 
+/* Estado do card quando se torna visível pela animação de rolagem (mas não necessariamente ativo) */
 .projects-carousel-track .project-card.reveal-on-scroll.is-visible {
-    opacity: 0.7; 
-    transform: translateY(0) scale(0.95); 
+    opacity: 0.85; /* Opacidade padrão para cards visíveis não ativos */
+    transform: translateY(0) scale(1); /* Volta ao tamanho normal e posição Y correta */
 }
 
+/* Estado do card quando está visível E é o card ativo */
 .projects-carousel-track .project-card.reveal-on-scroll.is-visible.is-active-project {
-    opacity: 1; 
-    transform: translateY(0) scale(1.05); 
+    opacity: 1; /* Opacidade total */
+    transform: translateY(0) scale(1); /* Mantém o tamanho normal, sem o zoom extra */
+    /* Os outros estilos de .is-active-project (box-shadow, border-color) já se aplicam */
 }
 
 
 .projects-carousel-track .project-card:last-child {
-    margin-right: 0;
+    margin-right: 0; /* Remove a margem do último card */
 }
 
 .project-card .project-image {
@@ -463,7 +472,7 @@ nav ul li a.active::after {
 .project-card h3 {
     margin-bottom: 10px;
     color: #007bff;
-    font-size: 1.3rem; 
+    font-size: 1.3rem;
 }
 
 .project-card .project-tags {
@@ -478,28 +487,28 @@ nav ul li a.active::after {
     color: #fff;
     padding: 5px 12px;
     border-radius: 15px;
-    font-size: 0.7rem; 
+    font-size: 0.7rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .project-card p {
-    font-size: 0.9rem; 
+    font-size: 0.9rem;
     margin-bottom: 12px;
-    color: #495057; 
+    color: #495057;
     flex-grow: 1; 
 }
 .project-card p:last-of-type {
-    margin-bottom: 0; 
+    margin-bottom: 0;
 }
 .project-card p strong {
     color: #343a40;
-    font-weight: 600; 
+    font-weight: 600;
 }
 
 .project-card .project-links {
-    margin-top: auto; 
+    margin-top: auto;
     padding-top: 20px;
     display: flex;
     flex-wrap: wrap;
@@ -508,14 +517,14 @@ nav ul li a.active::after {
 }
 
 .project-card .project-button {
-    font-size: 0.8rem !important; 
+    font-size: 0.8rem !important;
     padding: 7px 14px !important;
 }
 
 
 .carousel-button {
     position: absolute;
-    top: calc(50% - 20px); 
+    top: calc(50% - 20px);
     transform: translateY(-50%);
     background-color: rgba(52, 58, 64, 0.6);
     color: #fff;
@@ -537,11 +546,11 @@ nav ul li a.active::after {
 }
 
 .carousel-button.prev {
-    left: 10px; 
+    left: 10px;
 }
 
 .carousel-button.next {
-    right: 10px; 
+    right: 10px;
 }
 
 .carousel-button:disabled {
@@ -555,7 +564,6 @@ nav ul li a.active::after {
     background-color: #e9ecef;
     text-align: center;
 }
-/* ... (restante dos estilos para .contact, .form-group, .form-status-message como antes) ... */
 .contact p {
     margin-bottom: 30px;
     font-size: 1.1rem;
@@ -590,7 +598,7 @@ nav ul li a.active::after {
     box-sizing: border-box;
     font-size: 1rem;
     background-color: #fff;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Adicionado */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .form-group input:focus,
 .form-group textarea:focus {
@@ -605,22 +613,22 @@ nav ul li a.active::after {
 }
 
 .form-status-message {
-    margin-top: 20px; 
+    margin-top: 20px;
     font-weight: 500;
-    padding: 12px 15px; 
+    padding: 12px 15px;
     border-radius: 5px;
     text-align: center;
     font-size: 0.95rem;
 }
 .form-status-message[style*="color: green"] {
-    background-color: #d1e7dd; 
+    background-color: #d1e7dd;
     border: 1px solid #badbcc;
-    color: #0f5132 !important; 
+    color: #0f5132 !important;
 }
 .form-status-message[style*="color: red"] {
     background-color: #f8d7da;
     border: 1px solid #f5c2c7;
-    color: #842029 !important; 
+    color: #842029 !important;
 }
 
 /* === FOOTER === */
@@ -641,8 +649,6 @@ footer .container {
 .reveal-on-scroll {
     opacity: 0;
     transform: translateY(40px);
-    /* A transição é aplicada aqui para todos os elementos .reveal-on-scroll,
-       exceto aqueles que podem ter transições mais específicas (como os cards do carrossel já têm) */
     transition: opacity 0.7s ease-out, transform 0.5s ease-out;
 }
 
@@ -652,7 +658,7 @@ footer .container {
 }
 
 /* Delays para o grid de skills - eles usam o .reveal-on-scroll genérico */
-.skills-grid .reveal-on-scroll { transition-duration: 0.4s; } /* Pode ajustar duração específica aqui */
+.skills-grid .reveal-on-scroll { transition-duration: 0.4s; }
 .skills-grid .reveal-on-scroll:nth-child(1) { transition-delay: 0.05s; }
 .skills-grid .reveal-on-scroll:nth-child(2) { transition-delay: 0.1s; }
 .skills-grid .reveal-on-scroll:nth-child(3) { transition-delay: 0.15s; }
@@ -667,7 +673,6 @@ footer .container {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-    /* Mantém transition-delay para que os elementos apareçam na ordem correta, mas instantaneamente */
   }
   .hero h1.animate-text-letters span.char,
   .hero p,
@@ -688,8 +693,7 @@ footer .container {
 
 
 /* === MEDIA QUERIES PARA RESPONSIVIDADE === */
-/* ... (Todas as media queries que já tínhamos, elas continuam válidas e importantes) ... */
-@media (min-width: 480px) { 
+@media (min-width: 480px) {
     .cta-buttons {
         flex-direction: row;
         justify-content: center;
@@ -738,11 +742,11 @@ footer .container {
     }
 
     .projects-carousel-track .project-card {
-        width: calc((100% / 2) - 15px); 
+        width: calc((100% / 2) - 15px);
         margin-right: 30px;
     }
     .project-carousel-wrapper {
-        padding: 0 45px; 
+        padding: 0 45px;
     }
      .carousel-button.prev { left: 0px; }
     .carousel-button.next { right: 0px; }
@@ -756,7 +760,7 @@ footer .container {
         grid-template-columns: repeat(3, 1fr);
     }
     .projects-carousel-track .project-card {
-        width: calc((100% / 3) - 20px); 
+        width: calc((100% / 3) - 20px);
          margin-right: 30px;
     }
 }
