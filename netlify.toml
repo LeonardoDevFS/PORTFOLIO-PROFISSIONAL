@@ -1,2 +1,12 @@
+# netlify.toml
+
 [build]
-  functions = "netlify/functions" # Informa ao Netlify onde estão suas funções
+  # Diretório onde estão os arquivos do seu site (HTML, CSS, JS)
+  publish = "portfolio-frontend/"
+  
+  # Diretório onde a Netlify encontrará suas funções serverless
+  functions = "netlify/functions/"
+
+# O comando de build pode ser omitido, pois seu site é estático.
+# A Netlify instalará as dependências do package.json automaticamente
+# para as funções.
