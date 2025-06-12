@@ -551,7 +551,7 @@ Este projeto está licenciado sob a Licença ISC. Veja o arquivo `LICENSE`.
 2.  **Escaneie o QR Code:** Use o WhatsApp no seu celular para escanear o código que aparecerá no terminal.
 3.  **Acesse o Dashboard:**
     * Após a conexão, acesse `http://localhost:3000` no seu navegador.
-    * **Login (Desenvolvimento):** Usuário: `Leonardocarmo`, Senha: `E5R4A7Vo123@` (definidos em `login.js`).
+    * **Login (Desenvolvimento):** Usuário: `Leonardocarmo`, Senha: `SEGREDO@` (definidos em `login.js`).
     * O dashboard principal estará em `http://localhost:3000/dashboard.html`.
 
 ## ⚠️ Notas de Segurança Cruciais
