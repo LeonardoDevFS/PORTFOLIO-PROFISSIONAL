@@ -88,35 +88,6 @@ Para rodar este projeto no seu computador, siga os passos abaixo.
 
 ---
 
-## 📚 READMEs dos Projetos Individuais
-
-Abaixo está o espaço dedicado para os detalhes de cada projeto listado no portfólio.
-
----
-
-### 🤖 Chatbot de Atendimento com Painel
-
-<br>
-
----
-
-### 📈 Sistema de Gestão para Distribuidoras
-
-<br>
-
----
-
-###🩸 Sistema de Gestão de Recoletas
-
-<br>
-
----
-
-### 📊 IT Helpdesk Dashboard
-
-<br>
-
----
 
 ## 📫 Contato
 
@@ -124,6 +95,12 @@ Abaixo está o espaço dedicado para os detalhes de cada projeto listado no port
 
 * **Email:** (leonardocarmo941@gmail.com)
 * **LinkedIn:** [https://www.linkedin.com/in/leonardo2002/](https://www.linkedin.com/in/leonardo2002/)
+
+---
+
+## 📚 READMEs dos Projetos Individuais
+
+Abaixo está o espaço dedicado para os detalhes de cada projeto listado no portfólio.
 
 ---
 
