@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leonardo Jonathan do Carmo - Suporte Técnico e Desenvolvimento</title>
+    <title>Leonardo Jonathan do Carmo - Suporte e Desenvolvimento</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
     <header>
         <nav class="container">
+            <a href="#sobre" class="logo">LeonardoCarmo</a>
             <ul>
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#sobre">Sobre Mim</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
                 <li><a href="#projetos">Projetos</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
@@ -20,225 +26,173 @@
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <div class="container">
-                <h1>Soluções de Suporte Técnico Centradas no Usuário e Empresarial e Engenharia Front-End</h1>
-                <p>Olá, sou Leonardo Jonathan do Carmo, um profissional dedicado a garantir a eficiência e a clareza na resolução de desafios tecnológicos, com formação em Desenvolvimento de Sistemas e Análise e Desenvolvimento de Sistemas. Minha paixão é transformar complexidade em soluções simples e acessíveis, combinando expertise técnica com uma comunicação empática.</p>
-                <div class="cta-buttons">
-                    <a href="#projetos" class="button primary">Veja Meus Projetos</a>
-                    <a href="#contato" class="button secondary">Entre em Contato</a>
-                    <a href="#habilidades" class="button outline">Conheça Minhas Habilidades</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="sobre" class="about reveal-on-scroll">
-            <div class="container">
-                <h2>Sobre Mim</h2>
-                <div class="profile">
-                    <div class="profile-image">
-                        <img src="src/img/Imagem do WhatsApp de 2025-05-27 à(s) 21.20.38_a04d59a2.jpg" alt="Foto profissional de Leonardo Jonathan do Carmo">
-                    </div>
-                    <div class="profile-text">
-                        <p>Minha jornada na tecnologia é impulsionada pela curiosidade e pelo desejo de ajudar. Atualmente trabalho na SYRIUS MEDICAL GROUP, na unidade do Hospital Santa Casa da Misericórdia de Itajubá, MG, lido diariamente com as demandas de um ambiente crítico, aprimorando minha capacidade de oferecer um serviço ágil e eficaz.</p>
-                        <p>Com formação técnica em Desenvolvimento de Sistemas (IFSUL/CESUMAR - conclusão em Julho/2025) e graduação em Análise e Desenvolvimento de Sistemas (CESUMAR - conclusão em Dezembro/2025), busco constantemente expandir meus horizontes. Estou cursando Engenharia de Front-End na EBAC e planejo iniciar Engenharia de Software em 2026.</p>
-                        <p>Minha filosofia de trabalho se baseia no foco no cliente, resolução eficiente e comunicação clara. Acredito que a paciência para explicar termos técnicos de forma acessível é tão crucial quanto a habilidade de diagnosticar um problema complexo. Sou especialmente motivado a desvendar desafios de rede, auxiliar usuários com os mais diversos softwares e tenho experiência na construção de chatbots com sistemas de filas e respostas automáticas, otimizando o atendimento e a experiência do usuário. Estou sempre aberto a aprender e a encontrar a melhor solução.</p>
+        <div class="container main-content">
+            <div class="left-column">
+                <div class="profile-intro">
+                    <h1>Leonardo Jonathan do Carmo</h1>
+                    <h2>Suporte Técnico e Desenvolvedor Web</h2>
+                    <p class="subtitle">Transformo desafios complexos de tecnologia em soluções eficientes e acessíveis, com foco em suporte e desenvolvimento full-stack.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/leonardo2002/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i data-feather="linkedin"></i>
+                        </a>
+                        <a href="https://github.com/seu-usuario-github" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                             <i data-feather="github"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section id="habilidades" class="skills reveal-on-scroll">
-            <div class="container">
-                <h2>Habilidades</h2>
-                
-                <h3>Habilidades Técnicas (Hard Skills)</h3>
-                <div class="skills-grid">
-                    <div class="skill-category reveal-on-scroll">
-                        <h4>Sistemas Operacionais</h4>
-                        <ul>
-                            <li>Windows (Desktop e Server) - Instalação, configuração, troubleshooting avançado</li>
-                            <li>Linux (Distribuições como Ubuntu, CentOS, Debian) - Administração básica/intermediária, scripting shell</li>
-                            <li>macOS - Suporte a usuários e integração em ambientes mistos</li>
-                        </ul>
-                    </div>
+            <div class="right-column">
+                <section id="sobre" class="content-section">
+                    <p>Minha jornada na tecnologia é impulsionada pela curiosidade e pelo desejo de ajudar. Atualmente na <strong>SYRIUS MEDICAL GROUP</strong>, no Hospital Santa Casa da Misericórdia de Itajubá, MG, lido diariamente com as demandas de um ambiente crítico, aprimorando minha capacidade de oferecer um serviço ágil e eficaz, com suporte especializado ao sistema de gestão hospitalar <strong>SPDATA</strong>.</p>
+                    <p>Minha filosofia de trabalho se baseia no foco no cliente, resolução eficiente e comunicação clara. Sou especialmente motivado a desvendar desafios de rede, auxiliar usuários com os mais diversos softwares e tenho experiência na construção de chatbots com sistemas de filas e respostas automáticas, otimizando o atendimento e a experiência do usuário.</p>
+                </section>
 
-                    <div class="skill-category reveal-on-scroll">
-                        <h4>Software de Gestão Hospitalar</h4>
-                        <ul>
-                            <li><strong>SPDATA:</strong> Suporte especializado, troubleshooting de módulos (Agendamento, Prontuário Eletrônico, Faturamento, etc.), configuração e auxílio a usuários.</li>
-                            <li>Sistemas de Prontuário Eletrônico do Paciente (PEP) - Diversos</li>
-                            <li>Sistemas de Gestão de Clínicas e Laboratórios (LIS/RIS)</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category reveal-on-scroll">
-                        <h4>Hardware e Redes</h4>
-                        <ul>
-                            <li>Diagnóstico e solução de problemas de hardware (desktops, notebooks, impressoras, periféricos)</li>
-                            <li>Montagem, manutenção e upgrade de computadores</li>
-                            <li>Redes TCP/IP, DNS, DHCP, VPN, LAN/WAN</li>
-                            <li>Configuração e troubleshooting de roteadores, switches e firewalls (básico)</li>
-                            <li>Cabeamento estruturado e organização de racks</li>
-                            <li>Ferramentas de monitoramento de rede (ex: Wireshark básico, Ping, Tracert, Nmap básico)</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category reveal-on-scroll">
-                        <h4>Ferramentas de Suporte e Produtividade</h4>
-                        <ul>
-                            <li>Sistemas de Ticketing/Chamados (ex: Jira Service Management, GLPI e etc)</li>
-                            <li>Ferramentas de Acesso Remoto (ex: TeamViewer, AnyDesk, LogMeIn, Microsoft Remote Desktop)</li>
-                            <li>Pacote Microsoft Office 365 / Google Workspace - Nível avançado</li>
-                            <li>Criação e manutenção de Documentação Técnica e Bases de Conhecimento (KB)</li>
-                            <li>Software de Antivírus e Segurança Endpoint</li>
-                            <li>Virtualização (ex: VMware Workstation, VirtualBox - básico)</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="skill-category reveal-on-scroll">
-                        <h4>Automação e Atendimento Inteligente</h4>
-                        <ul>
-                            <li>Desenvolvimento e implementação de Chatbots</li>
-                            <li>Configuração de sistemas de filas de atendimento</li>
-                            <li>Criação de fluxos de respostas automáticas (FAQs interativas)</li>
-                            <li>Plataformas de Chatbot (Ex: Dialogflow, ManyChat)</li>
-                            <li>API's para criações de BOT's para whatsapp como o whatsapp-web-js</li>
-                            <li>Integração de chatbots com outras ferramentas/sistemas (intermediário)</li>
-                        </ul>
-                    </div>
-
-                    <div class="skill-category reveal-on-scroll">
-                        <h4>Desenvolvimento e Banco de Dados</h4>
-                        <ul>
-                            <li>HTML5, CSS3, JavaScript (ES6+)</li>
-                            <li>Engenharia de Front-End na EBAC - React, Angular, Vue.js administradas com Node.js e Nest.js</li>
-                            <li>Lógica de Programação Avançada</li>
-                            <li>SQL (Consultas, DML, DDL - básico/intermediário)</li>
-                            <li>Controle de Versão com Git e GitHub</li>
-                            <li>Noções de APIs REST</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <h3>Habilidades Comportamentais (Soft Skills)</h3>
-                <div class="soft-skills-list">
-                    <ul>
-                        <li><strong>Comunicação Clara e Empática:</strong> Explicar termos técnicos complexos de forma simples para diversos públicos.</li>
-                        <li><strong>Paciência e Didática:</strong> Instruir usuários e garantir a compreensão das soluções de forma calma e eficaz.</li>
-                        <li><strong>Resolução de Problemas e Pensamento Crítico:</strong> Analisar situações, identificar causas raízes e implementar soluções robustas.</li>
-                        <li><strong>Foco no Cliente e Orientação para Resultados:</strong> Priorizar a satisfação do usuário e a resolução eficiente de suas necessidades.</li>
-                        <li><strong>Adaptabilidade e Aprendizado Contínuo:</strong> Disposição para aprender novas tecnologias, sistemas (como SPDATA) e se adaptar a diferentes cenários.</li>
-                        <li><strong>Trabalho em Equipe e Colaboração:</strong> Interagir e colaborar efetivamente com colegas e outros departamentos.</li>
-                        <li><strong>Gerenciamento de Tempo e Priorização:</strong> Lidar com múltiplos chamados e tarefas, definindo prioridades em ambientes dinâmicos.</li>
-                        <li><strong>Atenção aos Detalhes:</strong> Fundamental para diagnósticos precisos, documentação e prevenção de erros.</li>
-                        <li><strong>Proatividade e Iniciativa:</strong> Antecipar problemas, buscar melhorias contínuas e tomar a frente em desafios.</li>
-                        <li><strong>Resiliência e Inteligência Emocional:</strong> Lidar com pressão, frustrações e situações desafiadoras de forma construtiva.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="projetos" class="projects reveal-on-scroll">
-            <div class="container">
-                <h2>Projetos Atuais</h2>
-
-                <div class="project-carousel-wrapper">
-                    <button class="carousel-button prev" aria-label="Projeto anterior">&lt;</button>
-                    
-                    <div class="project-carousel-viewport">
-                        <div class="projects-carousel-track">
-                            
-                            <div class="project-card reveal-on-scroll">
-                                <h3>Sistema de Consulta Online para Fiscalização de Análises Biomédicas</h3>
-                                <p class="project-tags"> <span>WebApp</span> <span>Fiscalização</span> <span>Monitoramento em Tempo Real</span> </p> 
-                                <p><strong>Desafio:</strong> Dificuldade na fiscalização de dados biomédicos e monitoramento manual das temperaturas de armazenamento.</p> 
-                                <p><strong>Minha Atuação:</strong> Desenvolvi um site integrado que centraliza análises realizadas por biomédicos e leituras automáticas de temperatura de geladeiras. Implementei autenticação por perfis de acesso, dashboards em tempo real e histórico exportável.</p>  
-                                <p><strong>Resultado:</strong> Redução de 100% no uso de planilhas manuais, maior transparência para órgãos fiscalizadores, dados disponíveis 24/7 com atualização automática a cada 5 minutos.</p>
+                <section id="experiencia" class="content-section">
+                    <h2>Experiência e Formação</h2>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">Atual</span>
+                                <h3 class="timeline-title">Suporte Técnico Especializado</h3>
+                                <p class="timeline-company">SYRIUS MEDICAL GROUP - Itajubá, MG</p>
+                                <ul class="timeline-desc">
+                                    <li>Suporte a sistemas de gestão hospitalar (SPDATA) em ambiente crítico.</li>
+                                    <li>Diagnóstico e solução de problemas de hardware e redes (TCP/IP, DNS, DHCP).</li>
+                                    <li>Gerenciamento de chamados via sistemas de ticketing (Jira, GLPI).</li>
+                                    <li>Manutenção de infraestrutura de TI, incluindo servidores Windows e virtualização básica.</li>
+                                </ul>
                             </div>
-
-                            <div class="project-card reveal-on-scroll">
-                                <h3>Implementação de Chatbot para Triagem</h3>
-                                <p class="project-tags">
-                                    <span>Chatbot</span> <span>Automação</span> <span>Node.js</span> <span>JavaScript</span>
-                                </p>
-                                <p><strong>Desafio:</strong> Alto volume de mensagens pedindo ajuda para outros setores sobrecarregando setor interno.</p>
-                                <p><strong>Minha Atuação:</strong> Desenvolvi chatbot para triagem inicial, fluxos de diálogo, respostas automáticas, agendas em banco de dados com FIREBASE e sistema de filas. Usei a API WHATSAPP-WEB-JS.</p>
-                                <p><strong>Tecnologias e Ferramentas Utilizadas:</strong> Node.js, puppeteer, JavaScript, APIs.</p>
-                                <p><strong>Resultado:</strong> Redução de 30% nas mensagens de N1, respostas instantâneas para 30% das dúvidas. O restante sendo redirecionado para os atendentes corretos de outros setores.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">Conclusão: Dezembro/2025</span>
+                                <h3 class="timeline-title">Análise e Desenvolvimento de Sistemas (Graduação)</h3>
+                                <p class="timeline-company">CESUMAR</p>
                             </div>
-
-                            <div class="project-card reveal-on-scroll">
-                                <h3>Solução de Recoletas</h3>
-                                <p class="project-tags">
-                                    <span>SPDATA</span> <span>Sistemas Hospitalares</span> <span>SQL</span> <span>Node.js</span>
-                                </p>
-                                <p><strong>Desafio:</strong> Recoletas de sangue recorrentes por falhas como hemólise, sem controle adequado de status e acompanhamento.</p> <p><strong>Minha Atuação:</strong> Desenvolvi um sistema para gestão de recoletas, com controle de status por paciente e registro em tempo real usando banco de dados Firebase. Investiguei o fluxo atual, identifiquei gargalos, realizei consultas SQL e propus melhorias no processo.</p>  <p><strong>Resultado:</strong> Sistema implantado, rastreabilidade das recoletas aprimorada, relatórios normalizados, redução de retrabalho e economia estimada de ~6h/semana.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">Conclusão: Julho/2025</span>
+                                <h3 class="timeline-title">Desenvolvimento de Sistemas (Técnico)</h3>
+                                <p class="timeline-company">IFSUL / CESUMAR</p>
                             </div>
-
-                            <div class="project-card reveal-on-scroll">
-                                <h3>Landing Page GYMFLIX</h3>
-                                <p class="project-tags">
-                                    <span>Front-end</span> <span>HTML</span> <span>CSS</span> <span>React</span> <span>Back-end</span> <span>Node.js</span> <span>Express</span> <span>MongoDB</span>
-                                </p>
-                                <p><strong>Desafio:</strong> Criar uma landing page moderna e responsiva para a academia GYMFLIX, visando atrair novos alunos e apresentar seus serviços.</p>
-                                <p><strong>Minha Atuação:</strong> Desenvolvi a solução full-stack, criando um front-end dinâmico com React para a interface do usuário e um back-end com Node.js, Express e MongoDB para a API de contato e gestão de dados.</p>
-                                <p><strong>Resultado:</strong> Entreguei uma landing page responsiva e funcional, com formulário de contato integrado, otimizada para captação de leads e clara apresentação dos serviços da GYMFLIX.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">Em Andamento</span>
+                                <h3 class="timeline-title">Engenharia de Front-End</h3>
+                                <p class="timeline-company">EBAC - Escola Britânica de Artes Criativas e Tecnologia</p>
+                                <ul class="timeline-desc">
+                                     <li>Foco em tecnologias modernas como React, Angular, Vue.js, Node.js e Nest.js.</li>
+                                </ul>
                             </div>
-                                    
-                            
-                            <div class="project-card reveal-on-scroll">
-                                <h3>Plataforma de Cartões Presente com QR Code</h3>
-                                <p class="project-tags">
-                                    <span>Full-Stack</span> <span>React</span> <span>Next.js</span> <span>Node.js</span> <span>NestJS</span> <span>PostgreSQL</span> <span>QR Code</span> <span>PWA</span>
-                                </p>
-                                <p><strong>Desafio:</strong> Desenvolver uma plataforma web MVP para um sistema nacional de cartões presente físicos com QR Code, integrando painéis para franqueados, estabelecimentos, clientes e administração central.</p>
-                                <p><strong>Minha Atuação:</strong> Conduzi o desenvolvimento full-stack da primeira versão (MVP), desde a concepção dos painéis e WebApp até a implementação das funcionalidades de emissão de QR codes, controle de saldo, transações e relatórios, utilizando React/Next.js no front-end e Node.js/NestJS com PostgreSQL no back-end.</p>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">Planejamento: 2026</span>
+                                <h3 class="timeline-title">Engenharia de Software</h3>
+                                <p class="timeline-company">Próximos Passos</p>
                             </div>
-                            
                         </div>
                     </div>
+                </section>
 
-                    <button class="carousel-button next" aria-label="Próximo projeto">&gt;</button>
-                </div>
+                <section id="projetos" class="content-section">
+                    <h2>Projetos</h2>
+                    <div class="projects-grid">
+                        
+                        <div class="project-card">
+                            <div class="project-header">
+                                <i data-feather="layout" class="project-icon"></i>
+                                <h3 class="project-title">Sistema de Consulta para Análises Biomédicas</h3>
+                            </div>
+                            <p class="project-desc">WebApp que centraliza análises e monitora temperaturas em tempo real, eliminando o uso de planilhas manuais e aumentando a transparência para fiscalização.</p>
+                            <div class="project-tags">
+                                <span>WebApp</span>
+                                <span>Firebase</span>
+                                <span>Tempo Real</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <i data-feather="message-circle" class="project-icon"></i>
+                                <h3 class="project-title">Chatbot de Triagem para WhatsApp</h3>
+                            </div>
+                            <p class="project-desc">Desenvolvido para reduzir o volume de chamados N1, com triagem, filas e respostas automáticas. Reduziu em 30% as mensagens para o setor interno.</p>
+                            <div class="project-tags">
+                                <span>Node.js</span>
+                                <span>whatsapp-web-js</span>
+                                <span>Automação</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <i data-feather="droplet" class="project-icon"></i>
+                                <h3 class="project-title">Sistema de Gestão de Recoletas</h3>
+                            </div>
+                            <p class="project-desc">Plataforma para rastrear recoletas de amostras de sangue, registrando status em tempo real e gerando relatórios, economizando aproximadamente 6h/semana de trabalho.</p>
+                            <div class="project-tags">
+                                <span>SQL</span>
+                                <span>Firebase</span>
+                                <span>SPDATA</span>
+                                <span>Node.js</span>
+                            </div>
+                        </div>
+                         <div class="project-card">
+                             <div class="project-header">
+                                <i data-feather="gift" class="project-icon"></i>
+                                <h3 class="project-title">Plataforma MVP de Cartões Presente</h3>
+                            </div>
+                            <p class="project-desc">MVP de um sistema nacional de cartões presente com QR Code, incluindo painéis para franqueados, clientes e administração, com emissão e controle de saldo.</p>
+                            <div class="project-tags">
+                                <span>React</span>
+                                <span>Next.js</span>
+                                <span>NestJS</span>
+                                <span>PostgreSQL</span>
+                                <span>PWA</span>
+                            </div>
+                        </div>
 
+                    </div>
+                </section>
+                
+                <section id="contato" class="content-section">
+                    <h2>Contato</h2>
+                    <p>Interessado em minhas qualificações ou tem alguma pergunta? Adoraria conversar. Envie uma mensagem abaixo.</p>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required placeholder="Nome">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" placeholder="Assunto">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required placeholder="Sua mensagem"></textarea>
+                        </div>
+                        <button type="submit" class="button-primary">Enviar Mensagem</button>
+                    </form>
+                </section>
+
+                 <footer>
+                    <p>Desenvolvido com dedicação por Leonardo Jonathan do Carmo.</p>
+                    <p class="tech-stack">Construído com HTML, CSS, JavaScript e Netlify Functions.</p>
+                </footer>
             </div>
-        </section>
-
-        <section id="contato" class="contact reveal-on-scroll">
-            <div class="container">
-                <h2>Contato</h2>
-                <p>Interessado em minhas qualificações ou tem alguma pergunta? Adoraria conversar!</p>
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Nome:</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Assunto:</label>
-                        <input type="text" id="subject" name="subject">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensagem:</label>
-                        <textarea id="message" name="message" rows="6" required></textarea>
-                    </div>
-                    <button type="submit" class="button primary">Enviar Mensagem</button>
-                </form>
-                <p style="margin-top: 30px;">Você também pode me encontrar no <a href="https://www.linkedin.com/in/leonardo2002/" target="_blank" rel="noopener noreferrer" style="color: #007bff; text-decoration: none;">LinkedIn</a>.</p>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Leonardo Jonathan do Carmo. Todos os direitos reservados.</p>
         </div>
-    </footer>
-
+    </main>
     <script src="script.js"></script>
+    <script>
+      feather.replace(); // Ativa os ícones
+    </script>
 </body>
 </html>

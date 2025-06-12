@@ -1,775 +1,403 @@
-/* === ESTILOS GERAIS === */
-img {
-    max-width: 100%;
-    height: auto;
-    display: block; /* Remove espaço extra abaixo de imagens inline */
+/* === RESET E VARIÁVEIS GLOBAIS === */
+:root {
+    --bg-dark: #0D1117;
+    --bg-medium: #161B22;
+    --border-color: #30363D;
+    --text-primary: #C9D1D9;
+    --text-secondary: #8B949E;
+    --accent-blue: #58A6FF;
+    --accent-blue-hover: #79c0ff;
+
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-    color: #343a40;
-    line-height: 1.7;
-    font-size: 16px;
-    overflow-x: hidden; /* Previne scroll horizontal acidental */
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .container {
-    width: 90%;
-    max-width: 1140px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 0 15px;
-    box-sizing: border-box;
+    padding: 0 20px;
 }
-
-section {
-    padding-top: 60px;
-    padding-bottom: 60px;
-    box-sizing: border-box;
-}
-
-
-h1, h2, h3, h4 {
-    color: #212529;
-    margin-top: 0;
-    margin-bottom: 20px;
-    line-height: 1.3;
-}
-
-h1 {
-    font-size: clamp(2.2rem, 5vw, 3rem);
-}
-h2 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    text-align: center;
-    margin-bottom: 40px;
-}
-h3 {
-    font-size: clamp(1.4rem, 3vw, 1.75rem);
-}
-h4 {
-    font-size: clamp(1.1rem, 2.5vw, 1.25rem);
-}
-
 
 /* === HEADER E NAVEGAÇÃO === */
 header {
-    background-color: #343a40;
-    color: #fff;
-    padding: 15px 0;
+    background-color: rgba(13, 17, 23, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 nav.container {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding-top: 0;
-    padding-bottom: 0;
+    height: 70px;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    text-decoration: none;
 }
 
 nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 5px 10px;
+    gap: 25px;
 }
 
 nav ul li a {
-    color: #f8f9fa;
+    color: var(--text-secondary);
     text-decoration: none;
+    font-size: 0.9rem;
     font-weight: 500;
-    padding: 10px 15px;
-    border-radius: 5px;
-    position: relative; /* Para o pseudo-elemento ::after */
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: color 0.3s ease;
 }
-
-/* Efeito de sublinhado para links da navegação */
-nav ul li a::after {
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-    background: #007bff; /* Cor do sublinhado */
-    transition: width .3s ease-out; /* Transição suave para a largura */
-    position: absolute;
-    bottom: -2px; /* Posição do sublinhado */
-    left: 50%;
-    transform: translateX(-50%); /* Centraliza o sublinhado crescendo */
-}
-
-nav ul li a:hover::after,
-nav ul li a.active::after {
-    width: 70%; /* Largura do sublinhado no hover/active */
-}
-
 
 nav ul li a:hover,
-nav ul li a.active { /* Estilo de hover/active principal */
-    background-color: #007bff;
-    color: #fff;
-}
-/* Garante que o ::after do link ativo também apareça sem hover */
-nav ul li a.active::after {
-    width: 70%;
+nav ul li a.active {
+    color: var(--accent-blue);
 }
 
 
-/* === SEÇÃO HERO === */
-.hero {
-    background-color: #e9ecef;
-    text-align: center;
-    min-height: 80vh; /* Para dar mais espaço para a animação do texto */
+/* === LAYOUT PRINCIPAL (2 COLUNAS) === */
+.main-content {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
-.hero .container { /* Garante que o container dentro do hero também se alinhe */
-    width: 100%;
+.left-column {
+    width: 40%;
+    position: sticky;
+    top: 130px; /* header height + padding */
+    height: calc(100vh - 130px);
+    align-self: flex-start;
 }
 
-.hero h1 {
-    margin-bottom: 20px;
-    /* A classe .animate-text-letters será adicionada via JS */
+.right-column {
+    width: 60%;
+    min-width: 0; /* Previne overflow de flexbox */
 }
 
-.hero p {
-    font-size: clamp(1rem, 2.5vw, 1.15rem);
-    margin-bottom: 40px;
-    max-width: 750px;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0; /* Começa invisível para animar após o H1 */
-    transform: translateY(20px);
-    animation: fadeInP 0.8s ease-out 1.8s forwards; /* Delay para começar após o H1 */
+.profile-intro h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    color: var(--text-primary);
+    font-weight: 700;
 }
 
-@keyframes fadeInP {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-.cta-buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    opacity: 0; /* Começa invisível para animar após o H1 */
-    transform: translateY(20px);
-    animation: fadeInButtons 0.8s ease-out 2.2s forwards; /* Delay maior */
-}
-
-@keyframes fadeInButtons {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.cta-buttons a {
-    display: inline-block;
-    padding: 14px 30px;
-    text-decoration: none;
-    border-radius: 5px;
+.profile-intro h2 {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    color: var(--accent-blue);
     font-weight: 500;
-    min-width: 220px;
-    box-sizing: border-box;
-    text-align: center;
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-.cta-buttons a:hover {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    margin-top: 5px;
 }
 
-.button.primary {
-    background-color: #007bff;
-    color: #fff;
-    border: 2px solid #007bff;
-}
-.button.primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+.profile-intro .subtitle {
+    color: var(--text-secondary);
+    margin-top: 20px;
+    font-size: 1rem;
 }
 
-.button.secondary {
-    background-color: #6c757d;
-    color: #fff;
-    border: 2px solid #6c757d;
-}
-.button.secondary:hover {
-    background-color: #545b62;
-    border-color: #545b62;
-}
-
-.button.outline {
-    border: 2px solid #343a40;
-    color: #343a40;
-    background-color: transparent;
-}
-.button.outline:hover {
-    background-color: #343a40;
-    color: #fff;
-}
-
-
-/* === ANIMAÇÃO DE TEXTO LETRA POR LETRA (para Hero H1) === */
-.hero h1.animate-text-letters { /* Estilo para o H1 pai quando a classe é adicionada */
-    perspective: 400px; /* Adiciona perspectiva para o rotateX */
-}
-.hero h1.animate-text-letters span.char {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(30px) scale(0.8) rotateX(-90deg);
-    transform-origin: center center -15px; /* Ajusta a origem da rotação */
-    transition-property: transform, opacity;
-    transition-duration: 0.5s;
-    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* EaseOutCubic */
-    /* transition-delay é definido via JavaScript inline style */
-}
-
-.hero h1.animate-text-letters.text-revealed span.char {
-    opacity: 1;
-    transform: translateY(0) scale(1) rotateX(0deg);
-}
-
-/* === SEÇÃO SOBRE MIM === */
-.about {
-    background-color: #fff;
-}
-.profile {
+.social-links {
+    margin-top: 30px;
     display: flex;
-    flex-direction: column;
-    gap: 30px;
-    align-items: center;
-    text-align: center;
+    gap: 20px;
 }
 
-.profile-image {
-    flex-shrink: 0;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+.social-links a {
+    color: var(--text-secondary);
+    transition: color 0.3s ease, transform 0.3s ease;
 }
-
-.profile-text {
-    max-width: 750px;
+.social-links a:hover {
+    color: var(--accent-blue);
+    transform: translateY(-3px);
 }
-
-.profile-text p {
-    margin-bottom: 18px;
-    font-size: 1.05rem;
-}
-
-/* === SEÇÃO HABILIDADES === */
-.skills {
-    background-color: #f8f9fa;
-}
-.skills h3 {
-    font-size: clamp(1.3rem, 3.5vw, 1.6rem);
-    text-align: left;
-    margin-top: 40px;
-    margin-bottom: 25px;
-    border-bottom: 3px solid #007bff;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-.skills h3:first-of-type {
-    margin-top: 0;
+.social-links i {
+    width: 24px;
+    height: 24px;
 }
 
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 25px;
-    margin-bottom: 30px;
+/* === CONTEÚDO DA COLUNA DIREITA === */
+.content-section {
+    padding-bottom: 80px;
 }
 
-.skill-category {
-    background-color: #fff;
-    padding: 25px 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.skill-category:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+.content-section h2 {
+    display: none; /* Títulos de seção ocultos, já que o contexto é dado pela navegação */
 }
 
-
-.skill-category h4 {
-    color: #007bff;
-    margin-bottom: 18px;
+#sobre p {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+#sobre strong {
+    color: var(--text-primary);
+    font-weight: 500;
 }
 
-.skill-category ul {
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
+/* === TIMELINE DE EXPERIÊNCIA === */
+#experiencia h2 {
+    display: block; /* Mostra o título da seção de experiência */
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    margin-bottom: 40px;
 }
 
-.skill-category ul li {
-    margin-bottom: 10px;
-    padding-left: 28px;
+.timeline {
     position: relative;
-    font-size: 0.95rem;
+    padding-left: 30px;
+    border-left: 2px solid var(--border-color);
 }
 
-.skill-category ul li::before {
-    content: "✓";
-    color: #28a745;
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -39px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--bg-dark);
+    border: 3px solid var(--accent-blue);
+}
+
+.timeline-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    display: block;
+}
+
+.timeline-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.timeline-company {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.timeline-desc {
+    list-style: none;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+.timeline-desc li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 5px;
+}
+.timeline-desc li::before {
+    content: '›';
     position: absolute;
     left: 0;
+    color: var(--accent-blue);
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.2rem;
     top: -2px;
 }
 
-.soft-skills-list ul {
-    list-style: none;
-    padding-left: 0;
-    column-count: 1;
-}
-
-.soft-skills-list ul li {
-    background-color: #fff;
-    padding: 12px 18px;
-    margin-bottom: 12px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    padding-left: 35px;
-    position: relative;
-    font-size: 0.95rem;
-    break-inside: avoid-column;
-}
-
-.soft-skills-list ul li::before {
-    content: "⭐";
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.1em;
-}
-
-/* === SEÇÃO PROJETOS - CARROSSEL === */
-.projects {
-    background-color: #fff;
-}
-
-.project-carousel-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    margin: 40px auto 0;
-    padding: 0 50px; /* Espaço para os botões de navegação */
-    box-sizing: border-box;
-}
-
-.project-carousel-viewport {
-    width: 100%;
-    overflow: hidden;
-}
-
-.projects-carousel-track {
-    display: flex;
-    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
-}
-
-.projects-carousel-track .project-card {
-    min-width: 280px;
-    width: calc((100% / 3) - 20px); 
-    flex-shrink: 0;
-    margin-right: 30px;
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    padding: 25px 30px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    /* Transições para hover, active e reveal */
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-                opacity 0.4s ease,
-                box-shadow 0.4s ease,
-                border-color 0.4s ease; /* Adicionada transição para border-color */
-    opacity: 0.85; /* Cards não ativos são levemente translúcidos */
-    transform: scale(1); /* Estado base sem zoom */
-}
-
-/* Efeito de hover para cards não ativos */
-.projects-carousel-track .project-card:not(.is-active-project):hover {
-    transform: translateY(-3px); /* Leve elevação no hover */
-    opacity: 1; /* Opacidade total no hover */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* Estilo do card ativo - SEM O SCALE que poderia causar bugs */
-.projects-carousel-track .project-card.is-active-project {
-    opacity: 1; /* Totalmente opaco */
-    /* transform: scale(1.05); */ /* REMOVIDO o scale para evitar bugs de layout/overlap */
-    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.25), 0 4px 12px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
-    border-color: #007bff; /* Cor da borda para destaque */
-    z-index: 5; /* Garante que a sombra pronunciada não seja cortada por outros elementos */
-}
-
-/* --- Estilos para Animação de Revelar ao Rolar (Reveal-on-Scroll) para os cards --- */
-
-/* Estado inicial do card antes de ser revelado */
-.projects-carousel-track .project-card.reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(40px) scale(0.98); /* Começa de baixo, um pouco menor e invisível */
-}
-
-/* Estado do card quando se torna visível pela animação de rolagem (mas não necessariamente ativo) */
-.projects-carousel-track .project-card.reveal-on-scroll.is-visible {
-    opacity: 0.85; /* Opacidade padrão para cards visíveis não ativos */
-    transform: translateY(0) scale(1); /* Volta ao tamanho normal e posição Y correta */
-}
-
-/* Estado do card quando está visível E é o card ativo */
-.projects-carousel-track .project-card.reveal-on-scroll.is-visible.is-active-project {
-    opacity: 1; /* Opacidade total */
-    transform: translateY(0) scale(1); /* Mantém o tamanho normal, sem o zoom extra */
-    /* Os outros estilos de .is-active-project (box-shadow, border-color) já se aplicam */
-}
-
-
-.projects-carousel-track .project-card:last-child {
-    margin-right: 0; /* Remove a margem do último card */
-}
-
-.project-card .project-image {
-    width: 100%;
-    max-height: 200px;
-    object-fit: cover;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    border: 1px solid #e0e0e0;
-}
-
-.project-card h3 {
-    margin-bottom: 10px;
-    color: #007bff;
-    font-size: 1.3rem;
-}
-
-.project-card .project-tags {
-    margin-bottom: 18px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.project-card .project-tags span {
-    background-color: #007bff;
-    color: #fff;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 0.7rem;
-    font-weight: 500;
+/* === PROJETOS === */
+#projetos h2 {
+    display: block; /* Mostra o título da seção de projetos */
+    font-size: 1.2rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    margin-bottom: 40px;
 }
 
-.project-card p {
-    font-size: 0.9rem;
-    margin-bottom: 12px;
-    color: #495057;
-    flex-grow: 1; 
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
-.project-card p:last-of-type {
-    margin-bottom: 0;
+
+.project-card {
+    background-color: var(--bg-medium);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 8px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
-.project-card p strong {
-    color: #343a40;
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+.project-icon {
+    color: var(--accent-blue);
+}
+
+.project-title {
+    font-size: 1.1rem;
+    color: var(--text-primary);
     font-weight: 600;
 }
 
-.project-card .project-links {
-    margin-top: auto;
-    padding-top: 20px;
+.project-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    justify-content: flex-start;
 }
 
-.project-card .project-button {
-    font-size: 0.8rem !important;
-    padding: 7px 14px !important;
+.project-tags span {
+    background-color: rgba(88, 166, 255, 0.1);
+    color: var(--accent-blue);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-weight: 500;
 }
 
-
-.carousel-button {
-    position: absolute;
-    top: calc(50% - 20px);
-    transform: translateY(-50%);
-    background-color: rgba(52, 58, 64, 0.6);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 22px;
-    line-height: 45px;
+/* === CONTATO E FOOTER === */
+#contato h2 {
+    display: block; /* Mostra o título da seção de contato */
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+#contato p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
     text-align: center;
-    cursor: pointer;
-    z-index: 10;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.carousel-button:hover {
-    background-color: #007bff;
-}
-
-.carousel-button.prev {
-    left: 10px;
-}
-
-.carousel-button.next {
-    right: 10px;
-}
-
-.carousel-button:disabled {
-    background-color: rgba(108, 117, 125, 0.3);
-    cursor: not-allowed;
-    opacity: 0.5;
-}
-
-/* === SEÇÃO CONTATO === */
-.contact {
-    background-color: #e9ecef;
-    text-align: center;
-}
-.contact p {
     margin-bottom: 30px;
-    font-size: 1.1rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.contact form {
-    max-width: 700px;
-    margin: 0 auto;
 }
 
 .form-group {
-    margin-bottom: 25px;
-    text-align: left;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    font-size: 0.95rem;
+    margin-bottom: 15px;
 }
 
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: 14px 18px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 1rem;
-    background-color: #fff;
+    background-color: var(--bg-medium);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 12px 15px;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
     outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
 }
-.contact .button.primary {
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-secondary);
+}
+
+.button-primary {
     width: 100%;
-    padding: 15px;
-    font-size: 1.1rem;
-}
-
-.form-status-message {
-    margin-top: 20px;
-    font-weight: 500;
     padding: 12px 15px;
-    border-radius: 5px;
-    text-align: center;
-    font-size: 0.95rem;
+    background-color: var(--accent-blue);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-.form-status-message[style*="color: green"] {
-    background-color: #d1e7dd;
-    border: 1px solid #badbcc;
-    color: #0f5132 !important;
+.button-primary:hover {
+    background-color: var(--accent-blue-hover);
 }
-.form-status-message[style*="color: red"] {
-    background-color: #f8d7da;
-    border: 1px solid #f5c2c7;
-    color: #842029 !important;
+.button-primary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
-/* === FOOTER === */
 footer {
-    background-color: #343a40;
-    color: #f8f9fa;
     text-align: center;
-    padding: 40px 0;
-    font-size: 0.9em;
+    padding: 30px 0;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
 }
-footer .container {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-
-/* === ESTILOS GERAIS DE ANIMAÇÃO DE ROLAGEM (REVEAL) === */
-.reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.7s ease-out, transform 0.5s ease-out;
-}
-
-.reveal-on-scroll.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Delays para o grid de skills - eles usam o .reveal-on-scroll genérico */
-.skills-grid .reveal-on-scroll { transition-duration: 0.4s; }
-.skills-grid .reveal-on-scroll:nth-child(1) { transition-delay: 0.05s; }
-.skills-grid .reveal-on-scroll:nth-child(2) { transition-delay: 0.1s; }
-.skills-grid .reveal-on-scroll:nth-child(3) { transition-delay: 0.15s; }
-.skills-grid .reveal-on-scroll:nth-child(4) { transition-delay: 0.2s; }
-.skills-grid .reveal-on-scroll:nth-child(5) { transition-delay: 0.25s; }
-.skills-grid .reveal-on-scroll:nth-child(6) { transition-delay: 0.3s; }
-
-/* Reduzir motion para quem prefere */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .hero h1.animate-text-letters span.char,
-  .hero p,
-  .hero .cta-buttons,
-  .reveal-on-scroll {
-    opacity: 1; /* Garante que fiquem visíveis */
-    transform: none; /* Remove transformações iniciais */
-  }
-  .projects-carousel-track { /* Remove a transição do carrossel */
-    transition: none;
-  }
-  .projects-carousel-track .project-card { /* Remove transições de zoom/opacidade dos cards */
-    transition: none;
-    opacity: 1;
-    transform: scale(1);
-  }
+footer .tech-stack {
+    font-size: 0.75rem;
 }
 
 
-/* === MEDIA QUERIES PARA RESPONSIVIDADE === */
-@media (min-width: 480px) {
-    .cta-buttons {
-        flex-direction: row;
-        justify-content: center;
+/* === RESPONSIVIDADE === */
+@media (max-width: 992px) {
+    .main-content {
+        flex-direction: column;
     }
-    .contact .button.primary {
-        width: auto;
-        min-width: 250px;
+    .left-column, .right-column {
+        width: 100%;
     }
-}
-
-@media (min-width: 768px) { /* Tablets */
-    .container {
-        width: 85%;
+    .left-column {
+        position: static;
+        height: auto;
+        padding-bottom: 40px;
     }
-    
-    section {
-        padding-top: 80px;
-        padding-bottom: 80px;
+    nav.container {
+        padding: 0 20px;
     }
-
-    nav ul {
-        flex-wrap: nowrap;
-    }
-    nav ul li {
-        margin: 5px 15px;
-    }
-
-    .profile {
-        flex-direction: row;
-        text-align: left;
-        align-items: flex-start;
-    }
-
-    .profile-image {
-        width: 220px;
-        height: 220px;
-    }
-
-    .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .soft-skills-list ul {
-        column-count: 2;
-        column-gap: 30px;
-    }
-
-    .projects-carousel-track .project-card {
-        width: calc((100% / 2) - 15px);
-        margin-right: 30px;
-    }
-    .project-carousel-wrapper {
-        padding: 0 45px;
-    }
-     .carousel-button.prev { left: 0px; }
-    .carousel-button.next { right: 0px; }
-}
-
-@media (min-width: 992px) { /* Desktops Pequenos */
-    .container {
-        width: 80%;
-    }
-    .skills-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .projects-carousel-track .project-card {
-        width: calc((100% / 3) - 20px);
-         margin-right: 30px;
+    .projects-grid {
+        grid-template-columns: 1fr;
     }
 }
 
-@media (min-width: 1200px) { /* Desktops Grandes */
-    body {
-        font-size: 16.5px;
-    }
-    .container {
-        max-width: 1200px;
+@media (max-width: 768px) {
+    nav.container {
+        flex-direction: column;
+        gap: 10px;
+        height: auto;
+        padding: 15px 0;
     }
 }
