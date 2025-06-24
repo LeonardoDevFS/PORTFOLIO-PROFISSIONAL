@@ -573,3 +573,158 @@ Este projeto está licenciado sob a Licença ISC. Veja o arquivo `LICENSE`.
   Feito com ❤️ para otimizar o atendimento ao paciente.
 </p>
 
+
+# 🧪 LabPOP Syrius — Sistema de Gestão da Qualidade Laboratorial
+
+**LabPOP Syrius** é um Sistema de Gestão da Qualidade (SGQ) **desktop**, desenvolvido em **Python + PySide6**, projetado para auxiliar laboratórios a **digitalizar, controlar e gerenciar processos críticos**, garantindo conformidade com normas regulatórias como ISO/IEC 17025, FDA 21 CFR Part 11 e ANVISA RDC 658/2022.
+
+> 🔐 Robusto, seguro e auditável — substitui processos manuais e planilhas por um ambiente centralizado e rastreável.
+
+---
+
+## 🚀 Funcionalidades Principais
+
+### 📋 Controle de Documentos (POPs)
+- **Ciclo de Vida Completo**: Em elaboração → Em revisão → Aprovado → Obsoleto  
+- **Versionamento Automático**  
+- **Assinatura Eletrônica** (com reautenticação — 21 CFR Part 11)  
+- **Controle de Obsoletos**: Marca d'água automática em PDFs e aviso em `.docx`  
+- **Leituras Obrigatórias**: Atribuição e confirmação de leitura por usuários  
+
+---
+
+### 🔬 Gestão de Equipamentos e Eventos
+- **Cadastro Centralizado**: Equipamentos, parâmetros e registros  
+- **Controle de Qualidade Diário**: Temperatura, pH, Condutividade  
+- **Histórico Completo**: Calibrações, manutenções e reparos  
+- **Gestão de Certificados**: PDFs anexados a cada evento  
+- **Alertas Inteligentes**: Calibrações/manutenções próximas ou vencidas  
+
+---
+
+### ⚠️ Não Conformidades (NCs) + CAPA
+- **Workflow Estruturado**: Registro → Análise → CAPA → Verificação → Encerramento  
+- **Assinatura Eletrônica no Encerramento**  
+- **Gestão Visual com Cores**: Aberta 🟡 | Em análise 🟠 | Fechada 🟢  
+
+---
+
+### 🔒 Segurança & Conformidade
+- **Audit Trail**: Registro imutável de todas as ações críticas  
+- **Controle de Acesso (RBAC)**: Admin / Editor / Visualizador  
+- **Dashboard Interativo**: Clique direto para ação rápida  
+- **Validação de Dados**: Evita registros incompletos ou inválidos  
+- **Temas Claro 🌞 / Escuro 🌙**  
+
+---
+
+## 📜 Conformidade Regulatória
+
+✅ **ISO/IEC 17025** — Controle documental, equipamentos e NCs  
+✅ **FDA 21 CFR Part 11** — Assinaturas eletrônicas, trilha de auditoria  
+✅ **ANVISA RDC 658/2022** — Integridade de dados e rastreabilidade  
+✅ **Boas Práticas de Laboratório (BPL/GLP)** — POPs, equipamentos e desvios  
+
+---
+
+## 🛠️ Tech Stack
+
+| Categoria            | Tecnologia                    |
+|----------------------|-------------------------------|
+| 💻 Linguagem         | Python 3                      |
+| 🖼️ UI                | PySide6 (Qt for Python)       |
+| 🗃️ Banco de Dados    | SQLite 3                      |
+| 🎨 Ícones            | QtAwesome (FontAwesome 5)     |
+| 📄 Documentos        | `reportlab`, `python-docx`    |
+| 🔐 Segurança         | bcrypt (hash de senhas)       |
+
+---
+
+## ⚙️ Instalação e Execução
+
+### 🔧 Pré-requisitos
+- Python 3.8+
+- `pip` instalado
+
+### 🧬 1. Clone o projeto
+```bash
+git clone https://github.com/seu-usuario/labpop-syrius.git
+cd labpop-syrius
+```
+
+### 🧪 2. Ambiente virtual (opcional, mas recomendado)
+
+#### Windows:
+```bash
+python -m venv venv
+.env\Scriptsctivate
+```
+
+#### macOS / Linux:
+```bash
+python3 -m venv venv
+source venv/bin/activate
+```
+
+### 📦 3. Instalar dependências
+Crie um `requirements.txt` com:
+
+```
+PySide6
+qtawesome
+bcrypt
+pypdf
+python-docx
+reportlab
+```
+
+E rode:
+```bash
+pip install -r requirements.txt
+```
+
+### 🔐 4. Criar usuário admin
+```bash
+python create_admin.py
+```
+
+> 🛑 Login: `admin` | Senha: `admin123` (altere no primeiro acesso)
+
+### 🧭 5. Rodar o sistema
+```bash
+python run.py
+```
+
+---
+
+## 🗂️ Estrutura do Projeto
+
+```
+/LabPOP_Syrius
+├── app/
+│   ├── database/
+│   │   └── database_manager.py
+│   ├── ui/
+│   │   ├── utils/
+│   │   │   ├── pdf_watermarker.py
+│   │   │   ├── docx_watermarker.py
+│   │   │   └── theme_manager.py
+│   │   └── (arquivos da interface)
+│   └── main.py
+├── storage/
+│   ├── certificates/
+│   └── temp/
+├── create_admin.py
+├── run.py
+├── labpop_syrius.db
+├── README.md
+└── update_schema_v10.py (exemplo)
+```
+
+---
+
+## 👨‍💻 Autor
+
+**Leonardo Jonathan do Carmo**  
+🧑‍💼 Analista de Sistemas • Desenvolvedor Fullstack  
+🔗 [linkedin.com/in/desenvolvedor](https://www.linkedin.com/in/leonardo2002/)
